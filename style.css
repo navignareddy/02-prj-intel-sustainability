@@ -1,4 +1,6 @@
-
+/* =====================
+   RESET & BASE
+   ===================== */
 * {
   margin: 0;
   padding: 0;
@@ -11,12 +13,11 @@ body {
   color: #1f2937;
 }
 
+/* =====================
+   HERO
+   ===================== */
 .hero {
-  background: linear-gradient(
-    to right,
-    #2991d6,   
-    #044a9a    
-  );
+  background: linear-gradient(to right, #4aa0d8, #2e6bb3);
   color: white;
   text-align: center;
   padding: 60px 20px;
@@ -31,7 +32,6 @@ body {
   font-size: 42px;
   font-weight: 800;
   line-height: 1.1;
-  letter-spacing: 1px;
 }
 
 .underline {
@@ -46,25 +46,52 @@ body {
   margin: 0 auto;
   font-size: 16px;
   line-height: 1.6;
-  opacity: 0.95;
 }
 
-
+/* =====================
+   TIMELINE (CENTERED)
+   ===================== */
 .timeline {
   display: flex;
   gap: 30px;
   padding: 40px 30px;
-  justify-content: center;
-  flex-wrap: wrap;
+
+  max-width: 1200px;
+  margin: 0 auto;
+
+  justify-content: space-between;
+  overflow-x: auto;
+
+  scroll-snap-type: x mandatory;
 }
 
+.timeline::-webkit-scrollbar {
+  height: 8px;
+}
+
+.timeline::-webkit-scrollbar-thumb {
+  background: #c7d2fe;
+  border-radius: 10px;
+}
+
+/* =====================
+   CARDS
+   ===================== */
 .card {
   background: white;
-  width: 250px;
+  width: 260px;
+  min-width: 260px;
   padding: 18px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
   position: relative;
   overflow: hidden;
+  scroll-snap-align: start;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
 }
 
 .card h2 {
@@ -84,6 +111,9 @@ body {
   object-fit: cover;
 }
 
+/* =====================
+   HOVER OVERLAY
+   ===================== */
 .overlay {
   position: absolute;
   inset: 0;
@@ -95,14 +125,16 @@ body {
   font-size: 15px;
   line-height: 1.5;
   opacity: 0;
-  transition: opacity 0.25s ease;
+  transition: opacity 0.3s ease;
 }
 
 .card:hover .overlay {
   opacity: 1;
 }
 
-
+/* =====================
+   FOOTER TEXT
+   ===================== */
 .hint {
   text-align: center;
   color: #6b7280;
@@ -110,15 +142,19 @@ body {
   margin-bottom: 40px;
 }
 
-
+/* =====================
+   MOBILE STACK
+   ===================== */
 @media (max-width: 768px) {
   .timeline {
     flex-direction: column;
     align-items: center;
+    overflow-x: visible;
   }
 
   .card {
     width: 90%;
+    min-width: auto;
   }
 
   .hero h1 {
